@@ -40,15 +40,6 @@ input {
 This plugin supports the following configuration options plus the <<plugins-{type}s-{plugin}-common-options>> described later.
 
 
-  config :path, :validate => :string, :required => true
-
-  config :head, :validate => :string, :default => 'master'
-
-  config :limit, :validate => :number, :default => nil
-
-  config :diff, :validate => :boolean, :default => false
-
-
 [cols="<,<,<",options="header",]
 |=======================================================================
 |Setting |Input type|Required
