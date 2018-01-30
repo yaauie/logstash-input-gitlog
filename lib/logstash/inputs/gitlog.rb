@@ -29,6 +29,8 @@ class LogStash::Inputs::Gitlog < LogStash::Inputs::Base
 
   config :diff, :validate => :boolean, :default => false
 
+  config :delay, :validate => :number, :default => nil
+
 
   public
   def register
@@ -56,6 +58,12 @@ class LogStash::Inputs::Gitlog < LogStash::Inputs::Base
   end # def register
 
   def run(queue)
+    # delay-tactic enables testability
+    unless @delay.nil?
+      logger.info("delaying for `#{delay}` seconds...")
+      sleep(@delay)
+    end
+
     unprocessed_commits = Set.new
 
     commits.each do |commit|
